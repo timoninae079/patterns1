@@ -1,9 +1,9 @@
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.*;
 
 
@@ -11,7 +11,7 @@ public class AuthTest {
     @BeforeEach
     void setUp() {
         open("http://localhost:9999/");
-        Configuration.holdBrowserOpen = true;
+
     }
 
     @AfterEach
@@ -22,10 +22,29 @@ public class AuthTest {
 
     @Test
     void shouldTestActive() {
-        var validUser = DataGenerator.Registration.getRegisteredUser("active");
-        $("[data-test-id=login] .input__box .input__control").val(validUser.getLogin());
-        $("[data-test-id=password] .input__box .input__control").val(validUser.getPassword());
         $("[data-test-id=action-login]").click();
-        $("h2").shouldHave(Condition.exactText("Личный кабинет"));
+        $("h2").shouldHave(exactText("Личный кабинет"));
     }
+
+    @Test
+    @DisplayName("Should get error message if login with wrong login")
+    void shouldGetErrorIfWrongLogin() {
+        var registeredUser = DataGenerator.Registration.getRegisteredUser("active");
+        var wrongLogin = DataGenerator.Registration.getRandomLogin();
+        $("[data-test-id='login'] input").setValue(wrongLogin);
+        $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
+        $("[data-test-id='action-login']").click();
+        $("[data-test-id='error-notification']").shouldHave(exactText("Ошибка Ошибка! Неверно указан логин или пароль"));
+    }
+
+    @Test
+    @DisplayName("Should get error message if login with blocked registered user")
+    void shouldGetErrorIfBlockedUser() {
+        var blockedUser = DataGenerator.Registration.getRegisteredUser("blocked");
+        $("[data-test-id='login'] input").setValue(blockedUser.getLogin());
+        $("[data-test-id='password'] input").setValue(blockedUser.getPassword());
+        $("[data-test-id='action-login']").click();
+        $("[data-test-id='error-notification']").shouldHave(exactText("Ошибка! Пользователь заблокирован"));
+    }
+
 }
