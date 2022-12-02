@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f0178a5-778a-420d-bc9e-c888c37876fe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AuthTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AuthTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RegistrationInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RegistrationInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +95,7 @@
       <command value="csan" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.AuthTest.shouldTestActive">
+  <component name="RunManager" selected="Gradle.AuthTest">
     <configuration name="AuthTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -216,10 +213,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.AuthTest" />
         <item itemvalue="Gradle.AuthTest.shouldTestActive" />
         <item itemvalue="Gradle.AuthTest.shouldGetErrorIfWrongLogin" />
         <item itemvalue="Gradle.AuthTest.shouldGetErrorIfBlockedUser" />
-        <item itemvalue="Gradle.AuthTest" />
         <item itemvalue="Gradle.AuthTest.shouldTestBlocked" />
       </list>
     </recent_temporary>
@@ -248,5 +245,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/patterns1$AuthTest_shouldGetErrorIfWrongLogin.ic" NAME="AuthTest.shouldGetErrorIfWrongLogin Coverage Results" MODIFIED="1669994256528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/patterns1$AuthTest_shouldTestActive.ic" NAME="AuthTest.shouldTestActive Coverage Results" MODIFIED="1669995357396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

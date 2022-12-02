@@ -1,5 +1,8 @@
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,7 +15,13 @@ public class DataGenerator {
 
     public static class Registration {
         private static final Faker faker = new Faker(new Locale("ru"));
-        private static final RequestSpecification requestSpec = given();
+        private static final RequestSpecification requestSpec = new RequestSpecBuilder()
+                .setBaseUri("http://localhost")
+                .setPort(9999)
+                .setAccept(ContentType.JSON)
+                .setContentType(ContentType.JSON)
+                .log(LogDetail.ALL)
+                .build();
 
         public static void sendRequest(RegistrationInfo user) {
             given()
