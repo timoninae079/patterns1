@@ -11,9 +11,8 @@ import static io.restassured.RestAssured.given;
 public class DataGenerator {
 
     public static class Registration {
-        private static RequestSpecification requestSpec;
-
         private static final Faker faker = new Faker(new Locale("ru"));
+        private static final RequestSpecification requestSpec = given();
 
         public static void sendRequest(RegistrationInfo user) {
             given()
@@ -21,15 +20,17 @@ public class DataGenerator {
                     .body(new Gson().toJson(user))
                     .when()
                     .post("/api/system/users")
-                    .then() // "тогда ожидаем"
+                    .then()
                     .statusCode(200);
         }
 
         public static String getRandomLogin() {
+
             return faker.name().username();
         }
 
         public static String getRandomPassword() {
+
             return faker.internet().password();
         }
 

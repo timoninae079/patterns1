@@ -23,18 +23,18 @@ public class AuthTest {
     @Test
     void shouldTestActive() {
         $("[data-test-id=action-login]").click();
-        $("h2").shouldHave(exactText("Личный кабинет"));
+        $("h2").shouldHave(exactText("Интернет Банк"));
     }
 
     @Test
     @DisplayName("Should get error message if login with wrong login")
     void shouldGetErrorIfWrongLogin() {
-        var registeredUser = DataGenerator.Registration.getRegisteredUser("active");
+        RegistrationInfo registeredUser = DataGenerator.Registration.getRegisteredUser("active");
         var wrongLogin = DataGenerator.Registration.getRandomLogin();
         $("[data-test-id='login'] input").setValue(wrongLogin);
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("[data-test-id='action-login']").click();
-        $("[data-test-id='error-notification']").shouldHave(exactText("Ошибка Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification']").shouldHave(exactText("Ошибка!Неверно указан логин или пароль"));
     }
 
     @Test
@@ -46,5 +46,4 @@ public class AuthTest {
         $("[data-test-id='action-login']").click();
         $("[data-test-id='error-notification']").shouldHave(exactText("Ошибка! Пользователь заблокирован"));
     }
-
 }
