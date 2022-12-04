@@ -1,10 +1,10 @@
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 
@@ -30,7 +30,7 @@ public class DataGenerator {
                     .when()
                     .post("/api/system/users")
                     .then()
-                    .statusCode(200);
+                    .statusCode(404);
         }
 
         public static String getRandomLogin() {
