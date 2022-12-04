@@ -1,7 +1,7 @@
 import lombok.Value;
 
 @Value
-public class RegistrationInfo {
+class RegistrationInfo {
     String login;
     String password;
     String status;
