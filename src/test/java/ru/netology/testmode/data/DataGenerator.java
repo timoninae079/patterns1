@@ -1,3 +1,5 @@
+package ru.netology.testmode.data;
+
 import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -18,19 +20,20 @@ public class DataGenerator {
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
             .build();
-    private static final Faker faker = new Faker(new Locale("en"));
+    private static final Faker faker = new Faker(new Locale("ru"));
 
     private DataGenerator() {
     }
 
+
     private static void sendRequest(RegistrationDto user) {
-        given() // "дано"
-                .spec(requestSpec) // указываем, какую спецификацию используем
-                .body(user) // передаём в теле объект, который будет преобразован в JSON
-                .when() // "когда"
-                .post("/api/system/users") // на какой путь, относительно BaseUri отправляем запрос
-                .then() // "тогда ожидаем"
-                .statusCode(404); // код 200 OK
+        given()
+                .spec(requestSpec)
+                .body(user)
+                .when()
+                .post("/api/system/users")
+                .then()
+                .statusCode(200);
     }
 
     public static String getRandomLogin() {
@@ -53,7 +56,7 @@ public class DataGenerator {
         }
 
         public static RegistrationDto getRegisteredUser(String status) {
-            var registeredUser = getUser(status);
+            RegistrationDto registeredUser = getUser(status);
             sendRequest(registeredUser);
             return registeredUser;
         }
